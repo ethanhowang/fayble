@@ -8,7 +8,6 @@ import subprocess
 f = open('testing.html', 'w')
 
 template = """
-
 <html>
 <head>
     <title>Animation</title>
@@ -164,6 +163,7 @@ template = """
     </div>
 </div>
 """
+
 f.write(template)
 
 f.close()

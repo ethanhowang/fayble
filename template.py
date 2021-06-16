@@ -80,9 +80,9 @@ f.write(template)
 
 f.close()
 
-webbrowser.open('testingbase.html')
+# webbrowser.open('testingbase.html')
 
-# os.system('wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html testing.png')
+os.system('wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html testing.png')
 
 # os.system('c:/ffmpeg -i videos/flame.avi videos/flame.mp4')
 

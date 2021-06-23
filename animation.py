@@ -1,109 +1,228 @@
 import os
 import webbrowser
-import experiment
-# import codecs
-# import subprocess
+from functions import createsequence
+
+# create a for loop, length with number of frames, 75
+# decrease upper box height by 2.4
+# increase total bottom box height by 2.4
+# iterate 75 times, each creating an image to sequence folder
+# end frame, upper box completely gone, and bottom box completely uploaded
 
 
 # first frame
+def animate(frames):
 
-f = open('testing.html', 'w')
+    imagelist = createsequence(frames)
 
-# four variables
-# TOP BOX: height, margin (image), margin-top (Country)
-# NEW BOX: height
+    for i in range(frames):
 
-template = """
-<html>
-<head>
-    <title>Animation</title>
-</head>
-</body>
-<div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
-    <!-- scores, fayble, and influencers -->
-    <div style="float: left; width:1280px;">
-        <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
-        <div style="width: 1280px;">
-            <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
-            <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+        if i < 25:
+
+            if i == 0:
+
+                f = open('testing.html', 'w')
+
+                template = """
+                <html>
+                <head>
+                    <title>Animation</title>
+                </head>
+                </body>
+                <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
+                    <!-- scores, fayble, and influencers -->
+                    <div style="float: left; width:1280px;">
+                        <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
+                        <div style="width: 1280px;">
+                            <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+                            <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+                        </div>
+                        <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
+                    </div>
+                    <!-- scores, fayble, and influencers -->
+
+                    <div style="float: right; width:640px; height: 1080px;">
+                        <div style="background-color:#A45EF7; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                        <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                        <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                        <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                        <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                        <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
+                        </div>
+                    </div>
+                </div>
+                """
+                f.write(template)
+
+                f.close()
+
+
+
+
+        elif i < 37:
+
+            f = open('testing.html', 'w')
+
+            top_height = 178 - ((i - 25) + 1) * 15
+            bottom_height = 0.4 + (i - 25) * 15
+
+            template = """
+            <html>
+            <head>
+                <title>Animation</title>
+            </head>
+            </body>
+            <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
+                <!-- scores, fayble, and influencers -->
+                <div style="float: left; width:1280px;">
+                    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
+                    <div style="width: 1280px;">
+                        <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+                        <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+                    </div>
+                    <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
+                </div>
+                <!-- scores, fayble, and influencers -->
+
+                <div style="float: right; width:640px; height: 1080px;">
+                    <div style="background-color:#A45EF7; width:638px; height:{0}px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#10CE42; width:638px; height:{1}px; border: 1px solid #000000;">
+                    </div>
+                </div>
+            </div>
+            """.format(top_height, bottom_height)
+
+            
+
+            # formatting the html template
+            template.format(toph = top_height, bottomh = bottom_height)
+
+            f.write(template)
+
+            f.close()
+
+        else:
+
+            f = open('testing.html', 'w')
+
+            template = """
+            <html>
+            <head>
+                <title>Animation</title>
+            </head>
+            </body>
+            <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
+                <!-- scores, fayble, and influencers -->
+                <div style="float: left; width:1280px;">
+                    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
+                    <div style="width: 1280px;">
+                        <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+                        <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+                    </div>
+                    <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
+                </div>
+                <!-- scores, fayble, and influencers -->
+
+                <div style="float: right; width:640px; height: 1080px;">
+                    <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                    <div style="background-color:#10CE42; width:638px; height:178px; border: 1px solid #000000;">
+                    </div>
+                </div>
+            </div>
+            """
+
+            f.write(template)
+
+            f.close()
+
+        # setting the command
+
+        command = 'wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html ' + 'sequence/' + imagelist[i]
+
+        os.system(command)
+
+    os.system('c:/ffmpeg -r 25 -s 1920x1080 -i sequence/%04d.png -pix_fmt yuv420p animation.mp4')
+
+animate(75)
+
+if False:
+    f = open('testing.html', 'w')
+
+    top_height = 178 - (10 + 1) * 2.4
+    bottom_height = 0.4 + 10 * 2.4
+
+    template = """
+    <html>
+    <head>
+        <title>Animation</title>
+    </head>
+    </body>
+    <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
+        <!-- scores, fayble, and influencers -->
+        <div style="float: left; width:1280px;">
+            <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
+            <div style="width: 1280px;">
+                <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+                <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+            </div>
+            <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
         </div>
-        <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
+        <!-- scores, fayble, and influencers -->
+
+        <div style="float: right; width:640px; height: 1080px;">
+            <div style="background-color:#A45EF7; width:638px; height:{0}px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
+            </div>
+            <div style="background-color:#10CE42; width:638px; height:{1}px; border: 1px solid #000000;">
+            </div>
+        </div>
     </div>
-    <!-- scores, fayble, and influencers -->
+    """.format(top_height, bottom_height)
 
-    <div style="float: right; width:640px; height: 1080px;">
-        <div style="background-color:#A45EF7; width:638px; height:175.6px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 22.6px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='usa.png'/>
-            <h3 style= "margin-top: 27.6px;"> USA </h3>
-            <p style="margin: 10px; overflow: hidden;"> He did it again! The series is now tied 3-3! Next game will be held at Staples
-                center! Come and see the final round at the NBA playoffs! </p>
-        </div>
-        <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='china.png'/>
-            <h3 style= "margin-top: 30px;"> China </h3>
-            <p style="margin: 10px; overflow: hidden;"> Yao Ming has been amazing this year! Scoring 30 points, 5 rebounds, 9 assists!
-            Can't wait to see what else he has to offer this season! </p>
-        </div>
-        <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='argentina.png'/>
-            <h3 style= "margin-top: 30px;"> Argentina </h3>
-            <p style="margin: 10px; overflow: hidden;"> Lionel Messi! What a score! Leading Barcelona to the Championships! Hat Trick! </p>
-        </div>
-        <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='japan.png'/>
-            <h3 style= "margin-top: 30px;"> Japan </h3>
-            <p style="margin: 10px; overflow: hidden;"> Yuji Hishida with the amazing ace! Has won the series! He is the MVP of the JTEKT Stings!
-            </p>
-        </div>
-        <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='korea.png'/>
-            <h3 style= "margin-top: 30px;"> Korea </h3>
-            <p style="margin: 10px; overflow: hidden;"> Bonchan Ku! Wow! All three shots were 10! This is his 3rd gold medal in the 2016 Olympics for 
-            Archery!
-            </p>
-        </div>
-        <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='singapore.png'/>
-            <h3 style= "margin-top: 30px;"> Singapore </h3>
-            <p style="margin: 10px; overflow: hidden;"> Joseph Schooling! What a sensational race! This man beat his idol in the 100m
-            butterfly race, securing Singapore's first ever gold medal in Olympic swimming!
-            </p>
-        </div>
-        <div style="background-color:#f30d0d; width:638px; height:0.4px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='jamaica.jpg'/>
-            <h3 style= "margin-top: 30px;"> Jamaica </h3>
-            <p style="margin: 10px; overflow: hidden;"> Usain Bolt! This man is absolutely insane! A 9.58 second 100m dash! He has set the 
-            world record!
-            </p>
-        </div>
-    </div>
-</div>
-"""
+    # setting new heights
 
-f.write(template)
+    # formatting the html template
 
-f.close()
 
-# webbrowser.open('testing.html')
+    f.write(template)
 
-os.system('wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html 0001.png')
+    f.close()
 
-# new comment
-"""
-<div style="background-color:#f30d0d; width:638px; height:2.4px; border: 1px solid #000000;">
-            <img style="float: left; width: 60px; height: 60 px; margin: 25px; 
-            border-radius: 40px; background-color:#000000; border:1px solid #000000;" src='jamaica.jpg'/>
-            <h3 style= "margin-top: 30px;"> Jamaica </h3>
-            <p style="margin: 10px; overflow: hidden;"> Usain Bolt! This man is absolutely insane! A 9.58 second 100m dash! He has set the 
-            world record!
-            </p>
-</div>
-"""
+    webbrowser.open('testing.html')
 
+    command = 'wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html ' + 'sequence/test.png'
+
+    os.system(command)

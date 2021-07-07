@@ -8,6 +8,62 @@ from functions import createsequence
 # iterate 75 times, each creating an image to sequence folder
 # end frame, upper box completely gone, and bottom box completely uploaded
 
+# testing first frame
+
+def simpleanimate():
+    # images: scores.png, influencers.png, fayble.png, comment1.png (top), comment2.png, comment3.png, comment4.png, comment5.png
+    # comment6.png (bottom)
+    # parse into all images based on image names written above
+    # create html document with open and write
+    # parse the collection of the nine images into one final image
+
+    # parsing score.png
+    imagelist = ['scores.png', 'influencers.png', 'fayble.png', 
+    'comment1.png', 'comment2.png', 'comment3.png', 'comment4.png', 'comment5.png','comment6.png']
+    f = open('scores.html', 'w')
+
+    scores_template = """
+    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div>
+    """
+
+    f.write(scores_template)
+    f.close()
+
+    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
+
+    os.system(command)
+
+    # parsing influencers.png
+    f = open('influencers.html', 'w')
+
+    scores_template = """
+    <div style="width: 1280px;">
+        <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+        <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
+    </div>
+    """
+
+    f.write(scores_template)
+    f.close()
+
+    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
+
+    os.system(command)
+
+    # parsing fayble.png
+    f = open('scores.html', 'w')
+
+    scores_template = """
+    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div>
+    """
+
+    f.write(scores_template)
+    f.close()
+
+    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
+
+    os.system(command)
+
 
 # first frame
 def animate(frames):
@@ -167,7 +223,7 @@ def animate(frames):
 
     os.system('c:/ffmpeg -r 25 -s 1920x1080 -i sequence/%04d.png -pix_fmt yuv420p animation.mp4')
 
-animate(75)
+simpleanimate()
 
 if False:
     f = open('testing.html', 'w')

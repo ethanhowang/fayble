@@ -22,11 +22,11 @@ def simpleanimate():
     'comment1.png', 'comment2.png', 'comment3.png', 'comment4.png', 'comment5.png','comment6.png']
     f = open('scores.html', 'w')
 
-    scores_template = """
+    template = """
     <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div>
     """
 
-    f.write(scores_template)
+    f.write(template)
     f.close()
 
     command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
@@ -36,33 +36,49 @@ def simpleanimate():
     # parsing influencers.png
     f = open('influencers.html', 'w')
 
-    scores_template = """
+    template = """
     <div style="width: 1280px;">
         <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
         <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
     </div>
     """
 
-    f.write(scores_template)
+    f.write(template)
     f.close()
 
-    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
+    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[1]
 
     os.system(command)
 
     # parsing fayble.png
-    f = open('scores.html', 'w')
+    f = open('fayble.html', 'w')
 
-    scores_template = """
-    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div>
+    template = """
+    <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
     """
 
-    f.write(scores_template)
+    f.write(template)
     f.close()
 
-    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[0]
+    command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[2]
 
     os.system(command)
+
+    # parsing all comments
+    for i in range(6):
+        f = open('comment' + str(i + 1) +'.html', 'w')
+
+        template = """
+        <div style="background-color:#A45EF7; width:638px; height:178px; border: 1px solid #000000;">
+        </div>
+        """
+
+        f.write(template)
+        f.close()
+
+        command = 'wkhtmltoimage --width 1280 --disable-smart-width --height 360 --enable-local-file-access scores.html ' + imagelist[3 + i]
+
+        os.system(command)
 
 
 # first frame

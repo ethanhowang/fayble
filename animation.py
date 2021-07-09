@@ -23,7 +23,7 @@ def simpleanimate():
     f = open('scores.html', 'w')
 
     template = """
-    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div>
+    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">Scores</div>
     """
 
     f.write(template)

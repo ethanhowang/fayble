@@ -70,7 +70,6 @@ template = """
             butterfly race, securing Singapore's first ever gold medal in Olympic swimming!
             </p>
         </div>
-
     </div>
 
 </body>

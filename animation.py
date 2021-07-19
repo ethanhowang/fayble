@@ -11,8 +11,7 @@ from functions import createsequence
 # testing first frame
 
 def simpleanimate():
-    # images: scores.png, influencers.png, fayble.png, comment1.png (top), comment2.png, comment3.png, comment4.png, comment5.png
-    # comment6.png (bottom)
+    # images: scores.png, influencers.png, fayble.png, comments.png
     # parse into all images based on image names written above
     # create html document with open and write
     # parse the collection of the nine images into one final image
@@ -176,162 +175,55 @@ def simpleanimate():
 
 
 # first frame
-def animate(frames):
+def animate():
 
-    imagelist = createsequence(frames)
+    # naming for image list
 
-    for i in range(frames):
+    imagelist = ['scores.png', 'influencers.png', 'fayble.png', 
+    'comments.png', 'middle.png']
+    
+    # cropping comments
+    croptop = 0
+    cropbottom = 0
+    command1 = 'magick convert comments.png -gravity South -chop 0x{0} comments.png'.format(croptop)
+    command2 = 'magick convert comments.png -gravity North -chop 0x{0} comments.png'.format(cropbottom)
+    
 
-        if i < 25:
+    f = open('final.html', 'w')
 
-            if i == 0:
-
-                f = open('testing.html', 'w')
-
-                template = """
-                <html>
-                <head>
-                    <title>Animation</title>
-                </head>
-                </body>
-                <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
-                    <!-- scores, fayble, and influencers -->
-                    <div style="float: left; width:1280px;">
-                        <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
-                        <div style="width: 1280px;">
-                            <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
-                            <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
-                        </div>
-                        <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
-                    </div>
-                    <!-- scores, fayble, and influencers -->
-
-                    <div style="float: right; width:640px; height: 1080px;">
-                        <div style="background-color:#A45EF7; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                        <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                        <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                        <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                        <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                        <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
-                        </div>
-                    </div>
+    template = """
+    <html>
+        <head>
+            <title>Animation</title>
+        </head>
+        <body>
+        <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
+            <!-- scores, fayble, and influencers -->
+            <div style="float: left; width:1280px;">
+                <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
+                <div style="width: 1280px;">
+                    <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
+                    <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
                 </div>
-                """
-                f.write(template)
-
-                f.close()
-
-
-
-
-        elif i < 37:
-
-            f = open('testing.html', 'w')
-
-            top_height = 178 - ((i - 25) + 1) * 15
-            bottom_height = 0.4 + (i - 25) * 15
-
-            template = """
-            <html>
-            <head>
-                <title>Animation</title>
-            </head>
-            </body>
-            <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
-                <!-- scores, fayble, and influencers -->
-                <div style="float: left; width:1280px;">
-                    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
-                    <div style="width: 1280px;">
-                        <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
-                        <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
-                    </div>
-                    <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
-                </div>
-                <!-- scores, fayble, and influencers -->
-
-                <div style="float: right; width:640px; height: 1080px;">
-                    <div style="background-color:#A45EF7; width:638px; height:{0}px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#10CE42; width:638px; height:{1}px; border: 1px solid #000000;">
-                    </div>
-                </div>
+                <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
             </div>
-            """.format(top_height, bottom_height)
+            <!-- scores, fayble, and influencers -->
 
-            
-
-            # formatting the html template
-            template.format(toph = top_height, bottomh = bottom_height)
-
-            f.write(template)
-
-            f.close()
-
-        else:
-
-            f = open('testing.html', 'w')
-
-            template = """
-            <html>
-            <head>
-                <title>Animation</title>
-            </head>
-            </body>
-            <div style="background-color:#BFC0C2; width:1920px; height:1080px;"> 
-                <!-- scores, fayble, and influencers -->
-                <div style="float: left; width:1280px;">
-                    <div style="background-color:#62affc;  width:1280px; height:360px; text-align:center">SCORES</div> 
-                    <div style="width: 1280px;">
-                        <div style="background-color:#FDD963;  width:640px; height:360px; text-align:center; float: left;">Influencer Here </div>
-                        <div style="background-color:#F248FE;  width:640px; height:360px; text-align:center; float: right;">Influencer Here </div>
-                    </div>
-                    <div style="width:1280px; height:360px; background-color:#66F836; text-align:center;">FAYBLE</div>
-                </div>
-                <!-- scores, fayble, and influencers -->
-
-                <div style="float: right; width:640px; height: 1080px;">
-                    <div style="background-color:#FF5E1D; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#3DFDC7; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#f7db5e; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#5557ff; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#f30d0d; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                    <div style="background-color:#10CE42; width:638px; height:178px; border: 1px solid #000000;">
-                    </div>
-                </div>
+            <div style="float: right; width:640px; height: 1080px;">
+                <img src='comments.png'/>
+                
             </div>
-            """
+        </div>
+        </body>
+    """
+    f.write(template)
+    f.close()
 
-            f.write(template)
+    command = 'wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access final.html ' + imagelist[4]
 
-            f.close()
+    os.system(command)
+    
 
-        # setting the command
-
-        command = 'wkhtmltoimage --width 1920 --disable-smart-width --height 1080 --enable-local-file-access testing.html ' + 'sequence/' + imagelist[i]
-
-        os.system(command)
-
-    os.system('c:/ffmpeg -r 25 -s 1920x1080 -i sequence/%04d.png -pix_fmt yuv420p animation.mp4')
 
 simpleanimate()
 
